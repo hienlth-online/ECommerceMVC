@@ -16,5 +16,13 @@ Mời các bạn theo dõi, học hỏi và chia sẽ. ([YouTube](https://www.yo
 
 ## Video 4 - Trang Danh sách hàng hóa - https://youtu.be/ocu5he0JSAs
 
+## Video 5 - Trang chi tiết hàng hóa - https://youtu.be/rTLZTVyGwlw
+
+## Video 6 - Đưa hàng vào giỏ - https://youtu.be/zooxDCy1oZY
+
+## Video 7 - Thông tin giỏ hàng - https://youtu.be/K01EacugLzo
+
+## Video 8 - Trang đăng ký - https://youtu.be/uuMMw2If1js
+
 #### Nếu thấy hay và hữu ích, hãy ủng hộ tôi 01 ly cafe để tỉnh táo thực hiện các video tiếp theo: *BIDV 0559 667 467*
 Chân thành cảm ơn.
