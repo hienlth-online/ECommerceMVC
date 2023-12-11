@@ -53,22 +53,29 @@
 			</div>
 			<div class="container px-0">
 				<nav class="navbar navbar-light bg-white navbar-expand-xl">
-					<a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">Fruitables</h1></a>
+					<a asp-action="Index" asp-controller="Home" class="navbar-brand"><h1 class="text-primary display-6">Fruitables</h1></a>
 					<button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 						<span class="fa fa-bars text-primary"></span>
 					</button>
 					<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 						<div class="navbar-nav mx-auto">
-							<a href="index.html" class="nav-item nav-link active">Home</a>
+							<a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">Home</a>
 							<a asp-controller="HangHoa" asp-action="Index" class="nav-item nav-link">Shop</a>
-							<a asp-controller="KhachHang" asp-action="DangKy" class="nav-item nav-link">Đăng ký</a>
 							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Member</a>
 								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="cart.html" class="dropdown-item">Cart</a>
-									<a href="chackout.html" class="dropdown-item">Chackout</a>
-									<a href="testimonial.html" class="dropdown-item">Testimonial</a>
-									<a href="404.html" class="dropdown-item">404 Page</a>
+									<a asp-controller="Cart" asp-action="Index" class="dropdown-item">Cart</a>
+									@if (User.Identity.IsAuthenticated)
+									{
+										<a asp-controller="KhachHang" asp-action="Profile" class="dropdown-item">Profile</a>
+										<a asp-controller="KhachHang" asp-action="DangXuat" class="dropdown-item">Logout</a>
+									}
+									else
+									{
+										<a asp-controller="KhachHang" asp-action="DangKy" class="dropdown-item">Đăng ký</a>
+										<a asp-controller="KhachHang" asp-action="DangNhap" class="dropdown-item">Đăng nhập</a>
+										<a asp-controller="KhachHang" asp-action="QuenMatKhau" class="dropdown-item">Quên mật khẩu</a>
+									}
 								</div>
 							</div>
 							<a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -78,7 +85,7 @@
 
 							@await Component.InvokeAsync("Cart")
 
-							<a href="#" class="my-auto">
+							<a asp-action="DangNhap" asp-controller="KhachHang" class="my-auto" title="Đăng nhập">
 								<i class="fas fa-user fa-2x"></i>
 							</a>
 						</div>
@@ -134,8 +141,8 @@
 	@RenderSection("Scripts", required: false)
 
 	<script>
-		$(document).ready(function () { 
-			$("#seachButton").click(function () { 
+		$(document).ready(function () {
+			$("#seachButton").click(function () {
 				let url = `/HangHoa/Search?query=` + $("#searchText").val();
 				window.location.href = url;
 			});

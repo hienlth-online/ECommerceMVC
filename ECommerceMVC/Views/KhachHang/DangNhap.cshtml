@@ -1,0 +1,33 @@
+﻿@model ECommerceMVC.ViewModels.LoginVM
+@{
+	ViewData["Title"] = "Đăng nhập";
+}
+<div class="container-fluid py-5">
+	<div class="container py-5">
+		<h1 class="mb-4">Đăng nhập</h1>
+		<form asp-action="DangNhap" asp-route-returnurl="@ViewBag.ReturnUrl">
+			<div class="text-danger" asp-validation-summary="All"></div>
+			<div class="row">
+				<div class="row">
+					<div class="col-md-12 col-lg-6">
+						<div class="form-item w-100">
+							<label asp-for="@Model.UserName" class="form-label my-3"></label><sup>*</sup>
+							<input asp-for="@Model.UserName" class="form-control">
+							<span asp-validation-for="@Model.UserName" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6">
+						<label asp-for="@Model.Password" class="form-label my-3"></label><sup>*</sup>
+						<input asp-for="@Model.Password" class="form-control">
+						<span asp-validation-for="@Model.Password" class="text-danger"></span>
+					</div>
+					<div class="row g-4 text-center align-items-center justify-content-center pt-4">
+						<button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Đăng nhập</button>
+						<a asp-control="KhachHang" asp-action="QuenMatKhau" class="btn border-danger">Quên mật khẩu</a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
