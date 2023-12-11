@@ -56,6 +56,7 @@ namespace ECommerceMVC.Controllers
 			return View(result);
 		}
 
+
 		public IActionResult Detail(int id)
 		{
 			var data = db.HangHoas
