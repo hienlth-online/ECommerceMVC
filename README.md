@@ -23,6 +23,10 @@ Mời các bạn theo dõi, học hỏi và chia sẽ. ([YouTube](https://www.yo
 
 ## Video 8 - Trang đăng ký - https://youtu.be/uuMMw2If1js
 
+## Video 9 - Đăng nhập - https://youtu.be/JUkop0oeKMg
+
+## Video 10 - Thanh toán COD - https://youtu.be/ZORr_H5QOY4
+
 
 #### Nếu thấy hay và hữu ích, hãy ủng hộ tôi 01 ly cafe để tỉnh táo thực hiện các video tiếp theo: *BIDV 0559 667 467*
 Chân thành cảm ơn.
