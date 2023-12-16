@@ -17,32 +17,31 @@
 <div class="container-fluid py-5">
 	<div class="container py-5">
 		<h1 class="mb-4">Billing details</h1>
-		<form asp-action="Checkout">
+		<form asp-action="Checkout" asp-controller="Cart">
 			<div class="row g-5">
-				<form asp-action="Checkout" asp-controller="Cart">
-					<div class="col-md-12 col-lg-6 col-xl-7">
-						<div class="form-check my-3">
-							<input type="checkbox" name="GiongKhachHang" class="form-check-input" id="GiongKhachHang" value="false">
-							<label class="form-check-label" for="GiongKhachHang">Giống thông tin khách hàng?</label>
-						</div>
-						<div class="form-item delivery-info">
-							<label class="form-label my-3">Người nhận hàng<sup>*</sup></label>
-							<input type="text" name="HoTen" class="form-control">
-						</div>
-						<div class="form-item delivery-info">
-							<label class="form-label my-3">Địa chỉ nhận hàng<sup>*</sup></label>
-							<input type="text" name="DiaChi" class="form-control" placeholder="123 Lê Lợi, Quận 1">
-						</div>
-						<div class="form-item delivery-info">
-							<label class="form-label my-3">Điện thoại<sup>*</sup></label>
-							<input type="text" name="DienThoai" class="form-control">
-						</div>
-						<div class="form-item mt-3">
-							<textarea name="GhiChu" class="form-control" spellcheck="false" cols="30" rows="11" placeholder="Ghi chú"></textarea>
-						</div>
-						<button type="submit" class="btn border-secondary text-uppercase text-primary w-100 mt-2">Đặt hàng</button>
+				<div class="col-md-12 col-lg-6 col-xl-7">
+					<div class="form-check my-3">
+						<input type="checkbox" name="GiongKhachHang" class="form-check-input" id="GiongKhachHang" value="false">
+						<label class="form-check-label" for="GiongKhachHang">Giống thông tin khách hàng?</label>
 					</div>
-				</form>
+					<div class="form-item delivery-info">
+						<label class="form-label my-3">Người nhận hàng<sup>*</sup></label>
+						<input type="text" name="HoTen" class="form-control">
+					</div>
+					<div class="form-item delivery-info">
+						<label class="form-label my-3">Địa chỉ nhận hàng<sup>*</sup></label>
+						<input type="text" name="DiaChi" class="form-control" placeholder="123 Lê Lợi, Quận 1">
+					</div>
+					<div class="form-item delivery-info">
+						<label class="form-label my-3">Điện thoại<sup>*</sup></label>
+						<input type="text" name="DienThoai" class="form-control">
+					</div>
+					<div class="form-item mt-3">
+						<textarea name="GhiChu" class="form-control" spellcheck="false" cols="30" rows="11" placeholder="Ghi chú"></textarea>
+					</div>
+					<button type="submit" class="btn border-secondary text-uppercase text-primary w-100 mt-2">Đặt hàng</button>
+					<div id="paypal-button-container" class="form-item mt-3" style="max-width:1000px;"></div>
+				</div>
 				<div class="col-md-12 col-lg-6 col-xl-5">
 					<div class="table-responsive">
 						<table class="table">
@@ -165,6 +164,7 @@
 </div>
 <!-- Checkout Page End -->
 @section Scripts {
+	<script src="https://www.paypal.com/sdk/js?client-id=@ViewBag.PaypalClientdId"></script>
 	<script>
 		$(document).ready(function () {
 			$("#GiongKhachHang").change(function () {
@@ -177,5 +177,37 @@
 				}
 			});
 		});
+
+		paypal.Buttons({
+			style: {
+				layout: 'vertical',
+				color: 'silver',
+				tagline: 'false'
+			},
+			createOrder: (data, actions) => {
+				return fetch("/Cart/create-paypal-order", {
+					method: "post",
+				}).then((response) => {
+					if (!response.ok) {
+						return response.json().then(error => { throw error; });
+					}
+
+					return response.json();
+				}).then((order) => order.id)
+				.catch(error => alert(error.message));
+			},
+			onApprove: (data, actions) => {
+				return fetch(`/Cart/capture-paypal-order?orderId=${data.orderID}`, {
+					method: "post",
+				}).then((response) => {
+					if (!response.ok) {
+						return response.json().then(error => { throw error; });
+					}
+
+					//Đổi địa chỉ tới action thông báo thành công
+					window.location.href = "/Cart/PaymentSuccess";
+				}).catch(error => alert(error.message));
+			}
+		}).render('#paypal-button-container');
 	</script>
 }

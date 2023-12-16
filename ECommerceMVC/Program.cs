@@ -1,4 +1,4 @@
-using ECommerceMVC.Data;
+﻿using ECommerceMVC.Data;
 using ECommerceMVC.Helpers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<Hshop2023Context>(options => {
+builder.Services.AddDbContext<Hshop2023Context>(options =>
+{
 	options.UseSqlServer(builder.Configuration.GetConnectionString("HShop"));
 });
 
@@ -29,6 +30,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 	options.LoginPath = "/KhachHang/DangNhap";
 	options.AccessDeniedPath = "/AccessDenied";
 });
+
+// đăng ký PaypalClient dạng Singleton() - chỉ có 1 instance duy nhất trong toàn ứng dụng
+builder.Services.AddSingleton(x => new PaypalClient(
+		builder.Configuration["PaypalOptions:AppId"],
+		builder.Configuration["PaypalOptions:AppSecret"],
+		builder.Configuration["PaypalOptions:Mode"]
+));
 
 var app = builder.Build();
 
