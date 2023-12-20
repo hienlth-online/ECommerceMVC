@@ -27,6 +27,10 @@ Mời các bạn theo dõi, học hỏi và chia sẽ. ([YouTube](https://www.yo
 
 ## Video 10 - Thanh toán COD - https://youtu.be/ZORr_H5QOY4
 
+## Video 11 - Thanh toán Paypal - https://youtu.be/3LqEwhQbzgc
+
+## Video 12 - Thanh toán VNPay - https://youtu.be/GEnt7jmIUiI
+
 
 #### Nếu thấy hay và hữu ích, hãy ủng hộ tôi 01 ly cafe để tỉnh táo thực hiện các video tiếp theo: *BIDV 0559 667 467*
 Chân thành cảm ơn.
