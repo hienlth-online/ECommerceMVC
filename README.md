@@ -32,5 +32,5 @@ Mời các bạn theo dõi, học hỏi và chia sẽ. ([YouTube](https://www.yo
 ## Video 12 - Thanh toán VNPay - https://youtu.be/GEnt7jmIUiI
 
 
-#### Nếu thấy hay và hữu ích, hãy ủng hộ tôi 01 ly cafe để tỉnh táo thực hiện các video tiếp theo: *BIDV 0559 667 467*
+#### Nếu thấy hay và hữu ích, hãy ủng hộ tôi 01 ly cafe để tỉnh táo thực hiện các video tiếp theo: *ACB 3994 3637*
 Chân thành cảm ơn.
